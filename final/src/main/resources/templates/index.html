@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <title>Tienda</title>
+</head>
+<body>
+    <h1>Bienvenido a la tienda</h1>
+
+    <h2>Productos disponibles</h2>
+    <form th:action="@{/buy}" method="post">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product : ${producto}">
+                    <td th:text="${product.nombre}"></td>
+                    <td th:text="${product.precio}"></td>
+                    <td th:text="${product.cantidad}"></td>
+                    <td>
+                        <form th:action="@{/buy}" method="post">
+                            <input type="email" name="email" placeholder="Ingresa tu correo" required/>
+                            <input type="hidden" name="productName" th:value="${product.nombre}"/>
+                            <input type="number" name="quantity" min="1" max="${product.cantidad}" value="1" required/>
+                            <button type="submit">Comprar</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>    
+</body>
+</html>

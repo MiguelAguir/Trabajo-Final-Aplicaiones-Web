@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado de la compra</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Compra</h1>
+        <div th:if="${message != null}" class="message" th:text="${message}"></div>
+        <div th:if="${error != null}" class="error" th:text="${error}"></div>
+        <h2>Detalle de la compra:</h2>
+        <div class="product-details">
+            <p>Productos: <span th:text="${productName}"></span></p>
+            <p>Cantidades: <span th:text="${quantity}"></span></p>
+        </div>
+        <p class="total-cost">Costo Total: S/.<span th:text="${totalCost}"></span></p>
+        <a href="/" class="button">Volver a la tienda</a>
+    </div>
+    <footer>
+        <p>&copy; 2024 Tienda Online. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
